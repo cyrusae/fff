@@ -1,0 +1,24 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Lexicographer
+
+## What do you want to know??
+
+***Maybe*** allow for turning spaces (` `)--regex with absence of known meaningful characters?--into `NA`s, also?
+
+- Names of columns
+- Apparent data type of columns 
+- Are recognizable NAs present?
+- % recognizable NA 
+- Number of unique values 
+
+## What else??
+
+- Are there pure word characters (no spaces or special characters or punctuation)?
+- Is there punctuation?
+- Are there special characters? 
+- Are there numbers? 
+- Does something appear to be "yes" or "no" or "true" or "false" or a manual NA?
