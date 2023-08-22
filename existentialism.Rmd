@@ -1,0 +1,11 @@
+---
+title: "Page E"
+output: html_notebook
+---
+
+
+```{r}
+library(checkmate) #type wrangling
+library(glue) 
+```
+
