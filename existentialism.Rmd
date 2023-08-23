@@ -2,10 +2,18 @@
 title: "Page E"
 output: html_notebook
 ---
-
-
 ```{r}
-library(checkmate) #type wrangling
-library(glue) 
+library(pak)
 ```
+```{r}
+use <- c('checkmate', 'data.table', 'fastmatch', 
+         'forcats', 'furrr', 'glue', 'na.tools', 
+         'poorman', 'triebeard', 'vctrs', 
+         'waldo', 'wrapr', 'zeallot')
+pak::pak(pkg = use)
+```
+```{r}
+lapply(use, require, character.only = TRUE)
+```
+
 
