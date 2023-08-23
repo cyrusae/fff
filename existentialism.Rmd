@@ -4,8 +4,7 @@ output: html_notebook
 ---
 ```{r}
 library(pak)
-```
-```{r}
+
 use <- c('checkmate', 'data.table', 'fastmatch', 
          'forcats', 'furrr', 'glue', 'na.tools', 
          'poorman', 'triebeard', 'vctrs', 
@@ -14,6 +13,26 @@ pak::pak(pkg = use)
 ```
 ```{r}
 lapply(use, require, character.only = TRUE)
+#The output when all of these load is kind of obnoxious 
+## but we don't need to fix that because it's a casualty of notebook drafting
+## as soon as this is in package format it'll be a non-issue 
+rm(use)
 ```
 
+## test case 1: 2020 PLS data (100% raw)
+
+```{r}
+imls_files <- wrapr::named_map_builder(targets = 
+                                         list.files(path = "./frex/IMLS/raw",
+                                                    full.names = FALSE),
+                                       values = 
+                                         list.files(path = "./frex/IMLS/raw",
+                                                    full.names = TRUE)) #make a named list of the files and their paths
+
+imls_data <- wrapr::named_map_builder(targets = names(imls_files),
+                                      values = furrr::future_map(
+                                        .x = imls_files,
+                                        .f = data.table::fread
+                                      )) #now make a named list of those files and their fread contents instead 
+```
 
